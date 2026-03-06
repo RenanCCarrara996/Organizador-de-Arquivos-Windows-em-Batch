@@ -14,7 +14,7 @@ Conjunto de dois programas em **Batch (Windows)** para organizar arquivos automa
 | `Comentado/organizador_de_arquivos-comentado.bat` | Versão anotada com comentários didáticos |
 | `Comentado/criador_arquivos_test-comentado.bat` | Versão anotada com comentários didáticos |
 
-> 💡 A pasta `Comentado/` contém as versões dos programas com comentários explicando cada comando e decisão do código — útil para quem quer entender o funcionamento interno ou está aprendendo Batch.
+> 💡 A pasta `Comentado/` contém as versões dos programas com comentários explicando alguns comandos e decisões do código — útil para quem quer entender o funcionamento interno ou está aprendendo Batch.
 
 ---
 
