@@ -50,7 +50,7 @@ Os arquivos são movidos para pastas agrupadas por tipo de conteúdo, com subpas
 │   ├── 📂 jpg/
 │   └── 📂 png/
 ├── 📂 Videos/
-├── 📂 Musicas/
+├── 📂 Audios/
 ├── 📂 Planilhas/
 ├── 📂 Slides/
 ├── 📂 Compactados/
@@ -78,7 +78,7 @@ Cada extensão ganha sua própria pasta diretamente:
 | Planilhas | `.xlsx` `.xls` `.csv` `.ods` |
 | Slides | `.pptx` `.ppt` `.odp` |
 | Vídeos | `.mp4` `.mkv` `.avi` `.mov` `.wmv` `.flv` |
-| Músicas | `.mp3` `.wav` `.wma` `.aac` `.flac` |
+| Audios | `.mp3` `.wav` `.wma` `.aac` `.flac` |
 | Compactados | `.zip` `.rar` `.7z` `.tar` `.gz` |
 | Executáveis | `.exe` `.msi` `.bat` `.sh` |
 
