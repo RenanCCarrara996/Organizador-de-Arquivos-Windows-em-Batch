@@ -182,7 +182,7 @@ echo Certo, prosseguindo em 5 segundos...
 timeout /t 5 /nobreak
 set /a count=0
 
-FOR %%E in (pdf docx doc txt rtf odt) do (
+FOR %%E in (pdf docx doc txt rtf odt md html) do (
   if exist "*.%%E" (
     if not exist "Documentos" ( 
       mkdir "Documentos" 
@@ -303,7 +303,7 @@ echo Categoria "Slides" completa^^!
 echo ________________________________________________________________
 set /a count=0
 
-FOR %%E in (mp4 mkv avi mov wmv flv) do (
+FOR %%E in (mp4 mkv avi mov wmv flv webm) do (
   if exist "*.%%E" (
     if not exist "Videos" (
       mkdir "Videos"
@@ -334,7 +334,7 @@ echo Categoria "Videos" completa^^!
 echo ________________________________________________________________
 set /a count=0
 
-FOR %%E in (mp3 wav wma aac flac) do (
+FOR %%E in (mp3 wav wma aac flac m4a) do (
   if exist "*.%%E" (
     if not exist "Audios" (
       mkdir "Audios"
@@ -365,7 +365,7 @@ echo Categoria "Audios" completa^^!
 echo ________________________________________________________________
 set /a count=0
 
-FOR %%E in (zip rar 7z tar gz) do (
+FOR %%E in (zip rar 7z tar gz tgz) do (
   if exist "*.%%E" (
     if not exist "Compactados" (
       mkdir "Compactados"
@@ -396,7 +396,69 @@ echo Categoria "Compactados" completa^^!
 echo ________________________________________________________________
 set /a count=0
 
-FOR %%E in (exe msi bat sh) do (
+FOR %%E in (sql gpg dat json xml yaml sqlite db mdb dbf accdb mdf ndf odb parquet) do (
+  if exist "*.%%E" (
+    if not exist "Dados" (
+      mkdir "Dados"
+      set /a count+=1
+    ) else (
+      if !count!==0 (
+        echo ========================================================================================================
+        echo PROCESSO PAUSADO
+        echo Ja existe uma pasta "Dados" nesse diretorio, apos o processo, verifique a existencia de arquivos
+        echo anteriores nao processados. Aguarde o processo encerrar!
+        echo RETOMANDO EM 5 SEGUNDOS...
+        echo ========================================================================================================
+        timeout /t 5 /nobreak
+        set /a count+=1
+      )
+    )
+    
+    if not exist "Dados\%%E" mkdir "Dados\%%E"
+    
+    move /y "*.%%E" "Dados\%%E\" >nul 2>&1
+  ) else (
+    echo Nao ha arquivos %%E para processar, continuando...
+  )
+)
+
+echo ________________________________________________________________
+echo Categoria "Dados" completa^^!
+echo ________________________________________________________________
+set /a count=0
+
+FOR %%E in (ps1 js py c cpp ts vbs php rb pl lua tsx jsx css scss java) do (
+  if exist "*.%%E" (
+    if not exist "Scripts" (
+      mkdir "Scripts"
+      set /a count+=1
+    ) else (
+      if !count!==0 (
+        echo ========================================================================================================
+        echo PROCESSO PAUSADO
+        echo Ja existe uma pasta "Scripts" nesse diretorio, apos o processo, verifique a existencia de arquivos
+        echo anteriores nao processados. Aguarde o processo encerrar!
+        echo RETOMANDO EM 5 SEGUNDOS...
+        echo ========================================================================================================
+        timeout /t 5 /nobreak
+        set /a count+=1
+      )
+    )
+    
+    if not exist "Scripts\%%E" mkdir "Scripts\%%E"
+    
+    move /y "*.%%E" "Scripts\%%E\" >nul 2>&1
+  ) else (
+    echo Nao ha arquivos %%E para processar, continuando...
+  )
+)
+
+echo ________________________________________________________________
+echo Categoria "Scripts" completa^^!
+echo ________________________________________________________________
+set /a count=0
+
+FOR %%E in (exe msi bat sh bash cmd com app bin run) do (
   if exist "*.%%E" (
     if not exist "Executaveis" (
       mkdir "Executaveis"
@@ -430,7 +492,7 @@ FOR %%E in (exe msi bat sh) do (
   )
 )
 echo ________________________________________________________________
-echo Categoria "Compactados" completa^^!
+echo Categoria "Executaveis" completa^^!
 echo ________________________________________________________________
 set /a count=0
 timeout /t 5
@@ -476,7 +538,7 @@ cls
 echo Certo, prosseguindo em 5 segundos...
 timeout /t 5 /nobreak
 
-FOR %%E in (pdf docx doc txt rtf odt jpg jpeg png gif bmp svg webp ico xlsx xls csv ods pptx ppt odp mp4 mkv avi mov wmv flv mp3 wav wma aac flac zip rar 7z tar gz exe msi bat sh) do (
+FOR %%E in (pdf docx doc txt rtf odt jpg jpeg png gif bmp svg webp ico xlsx xls csv ods pptx ppt odp mp4 mkv avi mov wmv flv mp3 wav wma aac flac zip rar 7z tar gz exe msi bat sh md html tgz sql gpg dat json xml yaml sqlite db mdb dbf accdb mdf ndf odb parquet ps1 js py c cpp ts vbs php rb pl lua bash cmd com app bin run tsx jsx css scss java) do (
   if exist "*.%%E" (
     if not exist "%%E" mkdir "%%E"
     
