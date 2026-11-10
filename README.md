@@ -54,6 +54,8 @@ Os arquivos são movidos para pastas agrupadas por tipo de conteúdo, com subpas
 ├── 📂 Planilhas/
 ├── 📂 Slides/
 ├── 📂 Compactados/
+├── 📂 Dados/
+├── 📂 Scripts/
 └── 📂 Executaveis/
 ```
 
@@ -67,20 +69,23 @@ Cada extensão ganha sua própria pasta diretamente:
 ├── 📂 jpg/
 ├── 📂 mp4/
 └── 📂 zip/
+...
 ```
 
 ### Extensões suportadas
 
 | Categoria | Extensões |
 |---|---|
-| Documentos | `.pdf` `.docx` `.doc` `.txt` `.rtf` `.odt` |
+| Documentos | `.pdf` `.docx` `.doc` `.txt` `.rtf` `.odt` `.md` `.html` |
 | Imagens | `.jpg` `.jpeg` `.png` `.gif` `.bmp` `.svg` `.webp` `.ico` |
 | Planilhas | `.xlsx` `.xls` `.csv` `.ods` |
 | Slides | `.pptx` `.ppt` `.odp` |
-| Vídeos | `.mp4` `.mkv` `.avi` `.mov` `.wmv` `.flv` |
-| Audios | `.mp3` `.wav` `.wma` `.aac` `.flac` |
-| Compactados | `.zip` `.rar` `.7z` `.tar` `.gz` |
-| Executáveis | `.exe` `.msi` `.bat` `.sh` |
+| Vídeos | `.mp4` `.mkv` `.avi` `.mov` `.wmv` `.flv` `.webm` |
+| Audios | `.mp3` `.wav` `.wma` `.aac` `.flac` `.m4a` |
+| Compactados | `.zip` `.rar` `.7z` `.tar` `.gz` `.tgz` |
+| Dados | `.sql` `.gpg` `.dat` `.json` `.xml` `.yaml` `.sqlite` `.db` `.mdb` `.dbf` `.accdb` `.mdf` `.ndf` `.odb` `.parquet` |
+| Scripts | `.ps1` `.js` `.py` `.c` `.cpp` `.ts` `.vbs` `.php` `.rb` `.pl` `.lua` `.tsx` `.jsx` `.css` `.scss` `.java` |
+| Executáveis | `.exe` `.msi` `.bat` `.sh` `.bash` `.cmd` `.com` `.app` `.bin` `.run` |
 
 ### ⚠️ Atenção
 - Feche todos os arquivos da pasta antes de executar.
