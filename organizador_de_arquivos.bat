@@ -336,14 +336,14 @@ set /a count=0
 
 FOR %%E in (mp3 wav wma aac flac) do (
   if exist "*.%%E" (
-    if not exist "Musicas" (
-      mkdir "Musicas"
+    if not exist "Audios" (
+      mkdir "Audios"
       set /a count+=1
     ) else (
       if !count!==0 (
         echo ========================================================================================================
         echo PROCESSO PAUSADO
-        echo Ja existe uma pasta "Musicas" nesse diretorio, apos o processo, verifique a existencia de arquivos
+        echo Ja existe uma pasta "Audios" nesse diretorio, apos o processo, verifique a existencia de arquivos
         echo anteriores nao processados. Aguarde o processo encerrar!
         echo RETOMANDO EM 5 SEGUNDOS...
         echo ========================================================================================================
@@ -352,16 +352,16 @@ FOR %%E in (mp3 wav wma aac flac) do (
       )
     )
     
-    if not exist "Musicas\%%E" mkdir "Musicas\%%E"
+    if not exist "Audios\%%E" mkdir "Audios\%%E"
     
-    move /y "*.%%E" "Musicas\%%E\" >nul 2>&1
+    move /y "*.%%E" "Audios\%%E\" >nul 2>&1
   ) else (
     echo Nao ha arquivos %%E para processar, continuando...
   )
 )
 
 echo ________________________________________________________________
-echo Categoria "Musicas" completa^^!
+echo Categoria "Audios" completa^^!
 echo ________________________________________________________________
 set /a count=0
 
