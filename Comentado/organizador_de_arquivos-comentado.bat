@@ -213,11 +213,11 @@ echo Certo, prosseguindo em 5 segundos...
 :: Comando para fazer pausa temporaria (/t para indicar time em segundos, /nobreak para evitar que o usuario pule a contagem)
 timeout /t 5 /nobreak
 :: laco de repeticao para reducao do codigo ("%%E" e uma var temporaria)
-:: Documentos: .pdf, .docx, .doc, .txt, .rtf, .odt
+:: Documentos: .pdf, .docx, .doc, .txt, .rtf, .odt, .md, .html
 set /a count=0
 
 :: Dentro de blocos FOR utilizar apenas comentarios do tipo "REM"
-FOR %%E in (pdf docx doc txt rtf odt) do (
+FOR %%E in (pdf docx doc txt rtf odt md html) do (
   if exist "*.%%E" (
     if not exist "Documentos" ( 
       mkdir "Documentos" 
@@ -351,8 +351,8 @@ echo ________________________________________________________________
 set /a count=0
 rem timeout /t 5
 
-:: Videos: .mp4, .mkv, .avi, .mov, .wmv, .flv
-FOR %%E in (mp4 mkv avi mov wmv flv) do (
+:: Videos: .mp4, .mkv, .avi, .mov, .wmv, .flv, .webm
+FOR %%E in (mp4 mkv avi mov wmv flv webm) do (
   if exist "*.%%E" (
     if not exist "Videos" (
       mkdir "Videos"
@@ -384,8 +384,8 @@ echo ________________________________________________________________
 set /a count=0
 rem timeout /t 5
 
-:: Audios: .mp3, .wav, .wma, .aac, .flac
-FOR %%E in (mp3 wav wma aac flac) do (
+:: Audios: .mp3, .wav, .wma, .aac, .flac, .m4a
+FOR %%E in (mp3 wav wma aac flac m4a) do (
   if exist "*.%%E" (
     if not exist "Audios" (
       mkdir "Audios"
@@ -417,8 +417,8 @@ echo ________________________________________________________________
 set /a count=0
 rem timeout /t 5
 
-:: Compactados: .zip, .rar, .7z, .tar, .gz
-FOR %%E in (zip rar 7z tar gz) do (
+:: Compactados: .zip, .rar, .7z, .tar, .gz, .tgz
+FOR %%E in (zip rar 7z tar gz tgz) do (
   if exist "*.%%E" (
     if not exist "Compactados" (
       mkdir "Compactados"
@@ -450,8 +450,74 @@ echo ________________________________________________________________
 set /a count=0
 rem timeout /t 5
 
-:: Executaveis: .exe, .msi, .bat, .sh
-FOR %%E in (exe msi bat sh) do (
+:: Dados: .sql, .gpg, .dat, .json, .xml, .yaml, .sqlite, .db, .mdb, .dbf, .accdb, .mdf, .ndf, .odb, .parquet
+FOR %%E in (sql gpg dat json xml yaml sqlite db mdb dbf accdb mdf ndf odb parquet) do (
+  if exist "*.%%E" (
+    if not exist "Dados" (
+      mkdir "Dados"
+      set /a count+=1
+    ) else (
+      if !count!==0 (
+        echo ========================================================================================================
+        echo PROCESSO PAUSADO
+        echo Ja existe uma pasta "Dados" nesse diretorio, apos o processo, verifique a existencia de arquivos
+        echo anteriores nao processados. Aguarde o processo encerrar!
+        echo RETOMANDO EM 5 SEGUNDOS...
+        echo ========================================================================================================
+        timeout /t 5 /nobreak
+        set /a count+=1
+      )
+    )
+    
+    if not exist "Dados\%%E" mkdir "Dados\%%E"
+    
+    move /y "*.%%E" "Dados\%%E\" >nul 2>&1
+  ) else (
+    echo Nao ha arquivos %%E para processar, continuando...
+  )
+)
+
+echo ________________________________________________________________
+echo Categoria "Dados" completa^^!
+echo ________________________________________________________________
+set /a count=0
+rem timeout /t 5
+
+:: Scripts: .ps1, .js, .py, .c, .cpp, .ts, .vbs, .php, .rb, .pl, .lua, .tsx, .jsx, .css, .scss, .java
+FOR %%E in (ps1 js py c cpp ts vbs php rb pl lua tsx jsx css scss java) do (
+  if exist "*.%%E" (
+    if not exist "Scripts" (
+      mkdir "Scripts"
+      set /a count+=1
+    ) else (
+      if !count!==0 (
+        echo ========================================================================================================
+        echo PROCESSO PAUSADO
+        echo Ja existe uma pasta "Scripts" nesse diretorio, apos o processo, verifique a existencia de arquivos
+        echo anteriores nao processados. Aguarde o processo encerrar!
+        echo RETOMANDO EM 5 SEGUNDOS...
+        echo ========================================================================================================
+        timeout /t 5 /nobreak
+        set /a count+=1
+      )
+    )
+    
+    if not exist "Scripts\%%E" mkdir "Scripts\%%E"
+    
+    move /y "*.%%E" "Scripts\%%E\" >nul 2>&1
+  ) else (
+    echo Nao ha arquivos %%E para processar, continuando...
+  )
+)
+
+echo ________________________________________________________________
+echo Categoria "Scripts" completa^^!
+echo ________________________________________________________________
+set /a count=0
+rem timeout /t 5
+
+:: Executaveis: .exe, .msi, .bat, .sh, .bash, .cmd, .com, .app, .bin, .run
+FOR %%E in (exe msi bat sh bash cmd com app bin run) do (
   if exist "*.%%E" (
     if not exist "Executaveis" (
       mkdir "Executaveis"
@@ -486,7 +552,7 @@ FOR %%E in (exe msi bat sh) do (
   )
 )
 echo ________________________________________________________________
-echo Categoria "Compactados" completa^^!
+echo Categoria "Executaveis" completa^^!
 echo ________________________________________________________________
 set /a count=0
 timeout /t 5
@@ -534,16 +600,7 @@ cls
 echo Certo, prosseguindo em 5 segundos...
 timeout /t 5 /nobreak
 
-:: Documentos: .pdf, .docx, .doc, .txt, .rtf, .odt
-:: Imagens: .jpg, .jpeg, .png, .gif, .bmp, .svg, .webp, .ico
-:: Planilhas: .xlsx, .xls, .csv, .ods
-:: Apresentacoes: .pptx, .ppt, .odp
-:: Videos: .mp4, .mkv, .avi, .mov, .wmv, .flv
-:: Audios: .mp3, .wav, .wma, .aac, .flac
-:: Compactados: .zip, .rar, .7z, .tar, .gz
-:: Executaveis: .exe, .msi, .bat, .sh
-
-FOR %%E in (pdf docx doc txt rtf odt jpg jpeg png gif bmp svg webp ico xlsx xls csv ods pptx ppt odp mp4 mkv avi mov wmv flv mp3 wav wma aac flac zip rar 7z tar gz exe msi bat sh) do (
+FOR %%E in (pdf docx doc txt rtf odt jpg jpeg png gif bmp svg webp ico xlsx xls csv ods pptx ppt odp mp4 mkv avi mov wmv flv webm mp3 wav wma aac flac m4a zip rar 7z tar gz tgz sql gpg dat json xml yaml sqlite db mdb dbf accdb mdf ndf odb parquet ps1 js py c cpp ts vbs php rb pl lua tsx jsx css scss java exe msi bat sh bash cmd com app bin run) do (
   if exist "*.%%E" (
     if not exist "%%E" mkdir "%%E"
     
